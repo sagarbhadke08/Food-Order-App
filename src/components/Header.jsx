@@ -1,7 +1,19 @@
-export default function Header(){
+import logoImg from '../assets/logo.jpg'
 
-    return(<>
+export default function Header() {
 
-        <header>Food Delivery Application</header>
-    </>)
+    return (
+        <>
+            <header id='main-header'>
+                <div id="title">
+                    <img src={logoImg} alt="A restaurant" />
+                    <h1>ReactFood</h1>
+                </div>
+                <nav>
+                    <button>Cart (0)</button>
+                </nav>
+            </header>
+         
+        </>
+    )
 }
