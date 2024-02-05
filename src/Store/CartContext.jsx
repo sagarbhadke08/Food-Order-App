@@ -17,15 +17,18 @@ function cartReducer(state, action) {
 
         if (existingCartIndex > -1) {
 
-
+            const existingItem = state.items[existingCartIndex];
 
             const updatedItem = {
-                ...state.items[existingCartIndex],
-                quantity: state.items[existingCartIndex].quantity + 1,
+                ...existingItem,
+                quantity: existingItem.quantity + 1,
             }
+            updatedItems[existingCartIndex]=updatedItem
         } else {
-            updatedItems.push(action.item)
+            updatedItems.push({...action.item, quantity:1})
         }
+
+        return {...state, items:updatedItems}
     }
 
     if (action.type === 'REMOVE-ITEM') {
