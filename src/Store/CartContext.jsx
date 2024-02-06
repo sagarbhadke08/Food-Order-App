@@ -23,16 +23,34 @@ function cartReducer(state, action) {
                 ...existingItem,
                 quantity: existingItem.quantity + 1,
             }
-            updatedItems[existingCartIndex]=updatedItem
+            updatedItems[existingCartIndex] = updatedItem
         } else {
-            updatedItems.push({...action.item, quantity:1})
+            updatedItems.push({ ...action.item, quantity: 1 })
         }
 
-        return {...state, items:updatedItems}
+        return { ...state, items: updatedItems }
     }
 
     if (action.type === 'REMOVE-ITEM') {
         //remove the state item from    
+        const existingCartIndex = state.item.findIndex(
+            (item) => state.id === action.item.id
+        );
+
+        const existingCartItem = state.items[existingCartIndex];
+        const updatedItems = [...state.items];
+        if (existingCartIndex.quantity === 1) {
+
+            updatedItems.splice(existingCartIndex, 1);
+        } else {
+            //if q is grater than 1
+
+            const updatedItem = {
+                ...existingCartItem,
+                quantity: existingCartItem.quantity - 1,
+            }
+            updatedItems[existingCartIndex] = updatedItem;
+        }
     }
 
     return state;
@@ -41,8 +59,28 @@ function cartReducer(state, action) {
 
 export function CartContextProvider({ children }) {
 
-    useReducer(cartReducer, { items: [] });
-    return <CartContext.Provider>{children}</CartContext.Provider>
+
+    const[cart, dispatchCartAction] =useReducer(cartReducer, { items: [] });
+
+   
+
+    function addItem(item){
+        dispatchCartAction({type:'ADD_ITEM',item})
+    }
+
+    function removeItem( id){
+        dispatchCartAction({type:'REMOVE_ITEM',id})
+    }
+
+    const cartContext = {
+        items:cart.items,
+        addItem,// pointing to the function
+        removeItem,
+    }
+
+   // console.log(cartContext);
+
+    return <CartContext.Provider value={cartContext}>{children}</CartContext.Provider>
 }
 
 export default CartContext;
