@@ -12,6 +12,8 @@ export default function Header() {
     const totalCartItems = cartCtx.items.reduce((totalNumberOfItems, item) => {
         return totalNumberOfItems + item.quantity;
     }, 0);
+    console.log(cartCtx);
+    console.log(totalCartItems);
 
     return (
         <>
