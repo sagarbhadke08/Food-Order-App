@@ -3,7 +3,7 @@ import { CurrencyFormatter } from "../util/Formatting.js"
 import { useContext } from "react"
 import CartContext from "../Store/CartContext.jsx"
 
-export default function MealItem({meal}) {
+export default function MealItem({ meal }) {
 
     const cartCtx = useContext(CartContext);
 
