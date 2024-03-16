@@ -15,7 +15,7 @@ export default function Header() {
         totalNumberOfItems + item.quantity;
     }, 0);
 
-    console.log(cartCtx);
+    //console.log(cartCtx);
     // console.log(totalNumberOfItems);
 
     function handleShowCart() {
@@ -23,17 +23,17 @@ export default function Header() {
     }
 
     return (
-        <>
-            <header id='main-header'>
+      
+            <header id="main-header">
                 <div id="title">
                     <img src={logoImg} alt="A restaurant" />
-                    <h1>ReactFood</h1>
+                    <h1>RR Empire</h1>
                 </div>
                 <nav>
                     <Button textOnly onClick={handleShowCart}>Cart ({totalCartItems})</Button>
                 </nav>
             </header>
 
-        </>
+        
     )
 }
