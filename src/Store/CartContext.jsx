@@ -15,7 +15,7 @@ function cartReducer(state, action) {
 
         const updatedItems = [...state.items];
 
-        if (existingCartIndex > -1) {
+        if (existingCartIndex > -1) { // bcz find index will return -1 if it does not find index value
 
             const existingItem = state.items[existingCartIndex];
 
