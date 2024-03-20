@@ -2,12 +2,12 @@ import { createContext, useReducer } from "react";
 
 const CartContext = createContext({
     items: [],
-    addItem: (item) => { },
-    removeItem: (id) => { },
+    addItem: (item) => {},
+    removeItem: (id) => {},
 });
 
 function cartReducer(state, action) {
-    if (action.type === 'ADD-ITEM') {
+    if (action.type === 'ADD_ITEM') {
         //update the state item to a meal item
         const existingCartIndex = state.item.findIndex(
             (item) => state.id === action.item.id
@@ -31,7 +31,7 @@ function cartReducer(state, action) {
         return { ...state, items: updatedItems }
     }
 
-    if (action.type === 'REMOVE-ITEM') {
+    if (action.type === 'REMOVE_ITEM') {
         //remove the state item from    
         const existingCartIndex = state.item.findIndex(
             (item) => state.id === action.item.id
