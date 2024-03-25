@@ -9,34 +9,36 @@ const UserProgressContext = createContext({
 
 export function UserProgressContextProvider({ children }) {
 
-    const[userProgress,setUserProgress] =useState('');
+    const [userProgress, setUserProgress] = useState('');
 
-    function showCart(){
+    function showCart() {
         setUserProgress('cart');
     }
 
-    function hideCart(){
-        setUserProgress('')
+    function hideCart() {
+        setUserProgress('');
     }
 
-    function showCheckout(){
-        setUserProgress('checkout')
+    function showCheckout() {
+        setUserProgress('checkout');
     }
 
-    function hideCheckout(){
-        setUserProgress('')
+    function hideCheckout() {
+        setUserProgress('');
     }
 
     const userProgressCtx = {
-        progress:userProgress,
+        progress: userProgress,
         showCart,
         showCheckout,
         hideCart,
-        hideCheckout
+        hideCheckout,
     }
 
     return (
-        <UserProgressContext.Provider value={userProgressCtx}>{children}</UserProgressContext.Provider>
+        <UserProgressContext.Provider value={userProgressCtx}>
+            {children}
+        </UserProgressContext.Provider>
     );
 }
 
