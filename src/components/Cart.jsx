@@ -5,7 +5,7 @@ import userProgressContext from "../Store/UserProgressContext.jsx"
 import Modal from "./UI/Modal.jsx";
 import Button from "./UI/Button.jsx";
 import CartItem from "./CartItem.jsx";
-
+import Checkout from "./Checkout.jsx";
 
 export default function Cart() {
 
@@ -20,6 +20,9 @@ export default function Cart() {
         userProgressCtx.hideCart();
     }
 
+    function handleGoToCheckOut(){
+        userProgressCtx.showCheckout();
+    }
 
     return (
         <Modal className="cart" open={userProgressCtx.progress === 'cart'}>
@@ -40,10 +43,12 @@ export default function Cart() {
             <p className="modal-actions">
                 <Button textOnly onClick={handleCloseCart}>Close</Button>
                 {cartCtx.items.length > 0 && (
-                    <Button onClick={handleCloseCart}>Go to Checkout</Button>
+                    <Button onClick={handleGoToCheckOut}>Go to Checkout</Button>
                 )}
 
             </p>
+             
+            
         </Modal>    
     );
 }
