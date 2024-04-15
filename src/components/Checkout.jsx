@@ -18,10 +18,10 @@ export default function Checkout() {
         0
     );
 
-function handleClose(){
-    userProgressCtx.hideCheckout();
+    function handleClose() {
+        userProgressCtx.hideCheckout();
 
-}
+    }
 
     return (
         <Modal open={userProgressCtx.progress === 'checkout'}>
